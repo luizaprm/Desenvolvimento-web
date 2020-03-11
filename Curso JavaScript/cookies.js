@@ -20,10 +20,10 @@ function readCookie(name){
     var cookies = document.cookie.split(';');
     for(var i=0;i<cokkies.length;i++){
         var c= cookies[i];
-        while(c.chartAt(0) == ''){
+        while(c.chartAt(0) == ' '){
             c = c.substring(1,c.length);
         }
-        if(c;indexOf(searchName) == 0){
+        if(c.indexOf(searchName) == 0){
             return c.substring(searchName.length,c.length);
         }
     }

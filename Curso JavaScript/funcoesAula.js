@@ -13,16 +13,25 @@ for (var i=0;i<s.length;i++){
 */
 
 
-
 window.onload = function() {
     document.getElementById("lampada").onclick = ligar;
-    setInterval(apresentaHoras, 1000)
+    setInterval(apresentaHoras, 1000);
+    var nome = readCookie("nome");
+    if(nome==null){
+        nome=prompt("Qual seu nome?");
+        this.writeCookie("nome", nome, 1);
+    }
+   
 }
 
 
 function ligar() {
     document.getElementById("lampada").src = "../projeto-glass-html5/_imagens/lampada-acesa.jpg";
     setTimeout(desligar, 3000);
+    var nome = readCookie("nome");
+    if(nome!=null){
+        alert("Muito bom te conhecer, " + nome);
+    }
 }
 
 function desligar() {
