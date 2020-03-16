@@ -1,0 +1,50 @@
+
+<!doctype html>
+<html lang="ptBR" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title>Exercício de AJAX</title>
+    <style>
+        input {
+            border: none;
+        }
+
+        * {
+            font-family: 'Roboto', sans-serif;
+            font-size: 12px;
+        }
+
+        #name {
+            text-transform: capitalize;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        onLoad();
+        
+        function onLoad(){
+            $.ajax({
+                url:"https://pokeapi.co/api/v2/pokemon/chikorita/",
+            
+            })
+            
+            .done(function(data){
+                document.getElementById("pokeImage").src = data.sprites.front_default;
+                document.getElementById("id").value = data.id; 
+                document.getElementById("name").value = data.species.name;
+            });
+        }
+            
+    </script>
+</head>
+
+<body>
+    <div style='display: flex;'>
+        <img id='pokeImage' src="">
+        <ul>
+            <li>Índice da PokéDex: <input id='id' type='text' readonly></li>
+            <li>Nome: <input id='name' type='text' readonly></li>
+        </ul>
+    </div>
+</body>
+</html>
