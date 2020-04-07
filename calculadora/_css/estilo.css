@@ -1,0 +1,18 @@
+body{
+    font-family: 'Segoe UI', sans-serif;
+    background-color: coral;
+    color: white;
+    font-size: 20pt;
+}
+
+div#calculadora{
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    font-size: 30pt;
+}
+
+.operador{
+    font-family: 'Segoe UI', sans-serif;
+    color: black;
+    font-size: 30pt;
+}
