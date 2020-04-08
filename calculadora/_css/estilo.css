@@ -1,18 +1,73 @@
 body{
     font-family: 'Segoe UI', sans-serif;
-    background-color: coral;
-    color: white;
-    font-size: 20pt;
+    background-image: linear-gradient(to right,#96c2e7,#e2b0d3, #ffc1ba);
+    color: black;
+    font-weight: bold;
+    font-size: 15pt;
 }
 
 div#calculadora{
     font-family: 'Segoe UI', sans-serif;
-    color: white;
+    color: black;
+    background-color:  #eaedef;
+    font-size: 15pt;
+    width: 300px;
+    height: 520px;
+    margin: 20px auto;
+    position: relative;
+    top: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,.2), 0 6px 20px 0px rgba(0,0,0,.5);
+}
+
+div#tela{
+    height: 120px;
+    text-align: right;
+}
+
+div#historico{
+    height: 2px;
+    margin: 0 20px;
+    padding-top: 20px;
+    font-size: 15px;
+    font-weight: lighter;
+    color: #83838b;
+}
+
+div#resultado{
+    height: 50px;
+    margin-left: 35px;
     font-size: 30pt;
 }
 
-.operador{
+div#teclado{
     font-family: 'Segoe UI', sans-serif;
     color: black;
-    font-size: 30pt;
+    margin-top: 5px;
+}
+
+.functionM{
+    background-color: #eaedef;
+    float: left;
+    width: 50px;
+    height: 30px;
+    font-size: 10px;
+    font-weight: bold;
+    border-width: 0;
+}
+
+.operador, .numero, .vazio{
+    margin: 5px 2px 5px 2px;
+    width: 70px;
+    height: 50px;
+    float: left;
+    font-size: 12pt;
+    background-color: #f8f9fd;
+    border-width: 1px;
+    transition: background-color 1s;
+}
+
+.numero:hover{
+    background-color: #956db6;
 }
