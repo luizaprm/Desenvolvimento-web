@@ -37,13 +37,14 @@ div#historico{
 
 div#resultado{
     height: 50px;
-    margin-left: 35px;
+    margin-right: 25px;
     font-size: 30pt;
 }
 
 div#teclado{
     font-family: 'Segoe UI', sans-serif;
     color: black;
+    padding: 5px;
     margin-top: 5px;
 }
 
@@ -57,17 +58,40 @@ div#teclado{
     border-width: 0;
 }
 
-.operador, .numero, .vazio{
+.operador{
     margin: 5px 2px 5px 2px;
     width: 70px;
     height: 50px;
     float: left;
     font-size: 12pt;
+    background-color: #8dd5f3;
+    border-width: 1px;
+    transition: background-color 1s;
+}
+
+#igual.operador{
+    background-color: #ebabf1;
+}
+
+#igual.operador:hover{
+    background-color: #c76ed3;;
+}
+
+.operador:hover,.numero:hover{ 
+    background-color: #bba3e0
+}
+
+.numero{
+    margin: 5px 2px 5px 2px;
+    width: 70px;
+    height: 50px;
+    float: left;
+    font-size: 12pt;
+    font-weight: bold;
     background-color: #f8f9fd;
     border-width: 1px;
     transition: background-color 1s;
 }
 
-.numero:hover{
-    background-color: #956db6;
-}
+
+
