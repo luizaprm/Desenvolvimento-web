@@ -8,6 +8,23 @@ var operadorClick = false;
 //var operacaoHistorico;
 var igualClick = false;
 
+
+function getHistorico(){
+    return document.getElementById("historico").innerText;
+}
+
+function getResultado(){
+    return document.getElementById("saida").value;
+}
+
+function printHistorico(num){
+    document.getElementById("historico").innerText = num;
+}
+
+function printResultado(num){
+		document.getElementById("output-value").innerText=num
+}
+
 function insereNum(botaoPressionado){
     if(resultado){
         novoValor = botaoPressionado;
@@ -31,88 +48,136 @@ function operadorMat(operadorBotao){
     }else{
         valorPrevio = resultado;
     }
-    operador = operadorBotao; 
+
     novoValor = ""; 
+    operador = operadorBotao; 
     decimalClick = false;
+    resultado = "";
+    var historico = valorPrevio + " " + operador;
+    document.getElementById("historico").value = historico;
 }
 
-function igual(){// REVER
+function igual(){
     valorPrevio = parseFloat(valorPrevio);
     novoValor = parseFloat(novoValor);
 
-    switch(operadorMat){
-        case"+":
+    switch(operador){
+        case "+":
             resultado = valorPrevio + novoValor;
             break;
-        case"-":
+        case "-":
             resultado = valorPrevio - novoValor;
             break;
-        case"*":
+        case "*":
             resultado = valorPrevio * novoValor;
             break;
-        case"/":
+        case "/":
             resultado = valorPrevio / novoValor;
             break;
     default:
             resultado = novoValor; //se o igual for pressionado sem antes clicar num operador, deixar como está
     }
+    document.getElementById("historico").value = valorPrevio + " " + operador + " " + novoValor + " =";
     valorPrevio = resultado;
-    document.getElementById("saida").value = resultado;
+    document.getElementById("saida").value = resultado;  
+
 }
 
-
 function porcentagem(){
-    var porcentValor = novoValor/100;
+    let porcentValor;
+    if(resultado){
+        porcentValor = resultado/100;
+    }else{
+        porcentValor = novoValor/100;
+    }
+    let auxiliar = novoValor;
+    novoValor = porcentValor;
     document.getElementById("saida").value = porcentValor;
-    //novoValor = porcentValor;
+    document.getElementById("historico").value = auxiliar + "%";
 }
 
 function fracao(){
-    var fracaoValor = 1/novoValor;
+    let fracaoValor;
+    if(resultado){
+        fracaoValor = 1/fracaoValor;
+    }else{
+        fracaoValor = 1/novoValor;
+    }
+    let auxiliar = novoValor;
+    novoValor = fracaoValor;
     document.getElementById("saida").value = fracaoValor;
-    //novoValor = fracaoValor;
+    document.getElementById("historico").value = "1/" + "(" + auxiliar + ")";
 }
 
 function potenciacao(){
-    var expValor = Math.pow(novoValor);
+    let expValor;
+    if(resultado){
+        expvalor = Math.pow(resultado,2)
+    }else{
+        expValor = Math.pow(novoValor, 2);
+    }
+    let auxiliar = novoValor;
+    novoValor = expValor;
     document.getElementById("saida").value = expValor;
-    //novoValor = potenciacaoValor;
+    document.getElementById("historico").value = "sqrt" + "(" + auxiliar + ")";
 }
 
 function raiz(){
-    var raizValor = Math.sqrt(novoValor);
+    let raizValor;
+    if(resultado){
+        raizValor = Math.sqrt(resultado);
+    }else{
+        raizValor = Math.sqrt(novoValor);
+    }
+    let auxiliar = novoValor;
+    novoValor = raizValor;
     document.getElementById("saida").value = raizValor;
-    //novoValor = raizValor;
+    document.getElementById("historico").value = "√" + "(" + auxiliar + ")";
+
 }
 
-function mudaSinal(){
-    if(Math.sign(novoValor) == -1){
-        novoValor = Math.abs(novoValor);
+function mudaSinal(){ 
+   // let auxiliar;
+    if(resultado){
+        if(Math.sign(resultado) == -1){
+            resultado = Math.abs(resultado);
+        }else{
+            if (Math.sign(resultado) == 1){
+                resultado*= -1;
+            }      
+        }
+        document.getElementById("saida").value = resultado;
     }else{
-        if (Math.sign(novoValor) == 1){
-            novoValor*= -1;
-        }      
+        if(Math.sign(novoValor) == -1){
+            novoValor = Math.abs(novoValor);
+        }else{
+            if (Math.sign(novoValor) == 1){
+                novoValor*= -1;
+            }
+        }
+    document.getElementById("saida").value = novoValor;     
     }
-    document.getElementById("saida").value = novoValor;
-    document.getElementById("entry").value = resultado;
 }
 
 function clearC(){ //limpa todas as operações que estavam sendo feitas
     valorPrevio = "";
     novoValor = "";
-    saida = "";
-    operadorMat = "";
+    resultado = "";
+    operador = "";
     decimalClick = false;
+    historico = "";
+    document.getElementById("historico").value = "";
     document.getElementById("saida").value = 0;
 } 
 
 function deleteNum(){
     var apagaDigito = document.getElementById("saida").value;
     document.getElementById("saida").value=apagaDigito.substr(0, apagaDigito.length -1);
-    //novoValor = document.getElementById("saida").value;
+
 }
 
-function cancelEntry(){ 
+function cancelEntry(){
+    novoValor = ""; 
     document.getElementById("saida").value = 0;
 }
 
@@ -130,3 +195,14 @@ function clearMemoria(){
     valorMemoria = "";
 }
 
+function addMemoria(){   //M+ = soma o resultado ao último n armazenado CONCATENOU
+    if(valorMemoria){
+        valorMemoria+= document.getElementById("saida").value;
+    }
+}
+
+function minusMemoria(){     //M- = subtrai o resultado ao último n armazenado DEU CERTO
+    if(valorMemoria){
+        valorMemoria-= document.getElementById("saida").value;
+    }
+}
