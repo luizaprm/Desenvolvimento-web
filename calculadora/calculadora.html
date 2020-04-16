@@ -5,47 +5,47 @@
     <link rel="stylesheet" href="_css/estilo.css"/>
     <title>Calculadora</title>
 </head>
-<script src="/calculadora/_javascript/funcoes.js"></script></script>
 <body>
     <p>Calculadora</p>   
         <div id = "calculadora">
+            <form name = "calculadora">
             <div id = 'tela'> 
-                <input type="text" id="tela" readonly>
-                <div id = 'historico'></div>
-                <div id = 'resultado'></div>
+                <div id = "history-value"></div>
+                <div id = "output-value"></div>
             </div>
-            <div id="teclado"></div>
+            <div id="teclado">
                 <input type="button" class="functionM" id="MC" value ='MC' onclick = "clearMemory()"/>
                 <input type="button" class="functionM" id="MR" value ='MR' onclick = "retrieveMemory()"/>
                 <input type="button" class="functionM" id="M+" value ='M+' onclick = "addMemory()" />
                 <input type="button" class="functionM" id="M-" value ='M-' onclick = "minusMemory()"/>
                 <input type="button" class="functionM" id="MS" value ='MS'onclick = "saveMemory()"/>
                 <input type="button" class="functionM" id="M"  value ='M' onclick = "recuperaMemory()"/>
-                <input type="button" class="operador" id="porcentagem" value ='%' onclick = "porcentagem()"/>
+                <input type="button" class="operador" id="%" value ='%' onclick = "porcentagem()"/>
                 <input type="button" class="operador" id="cancel entry" value ='CE' onclick = "cancelEntry()"/>
                 <input type="button" class="operador" id="clear" value ='C' onclick = "clear()"/>
                 <input type="button" class="operador" id="backspace" value = 'bcks' onclick = "backspace()"/>
                 <input type="button" class="operador" id="fracao" value = '1/x' onclick = "fracao()"/>
                 <input type="button" class="operador" id="x2" value = 'x&sup2' onclick = "potenciacao()"/>
                 <input type="button" class="operador" id="raiz" value = '&#x221A' onclick = "raiz()"/>
-                <input type="button" class="operador" id="divisao" value = '&divide' onclick = "operacao('/')"/>
-                <input type="button" class="numero" id="numero" value = '7' onclick = "insertNum(7)"/>
-                <input type="button" class="numero" id="numero" value = '8' onclick = "insertNum(8)" />
-                <input type="button" class="numero" id="numero" value = '9' onclick = "insertNum(9)"/>
-                <input type="button" class="operador" id="multiplicacao" value = '&times' onclick = "operacao('*')"/>
-                <input type="button" class="numero" id="numero" value = '4' onclick = "insertNum(4)"/>
-                <input type="button" class="numero" id="numero" value = '5' onclick = "insertNum(5)"/>
-                <input type="button" class="numero" id="numero" value = '6' onclick = "insertNum(6)"/>
-                <input type="button" class="operador" id="subtracao" value = '-' onclick = "operacao('-')">
-                <input type="button" class="numero" id="numero" value = '1' onclick = "insertNum(1)">
-                <input type="button" class="numero" id="numero" value = '2' onclick = "insertNum(2)"/>
-                <input type="button" class="numero" id="numero" value = '3' onclick = "insertNum(3)"/>
-                <input type="button" class="operador" id="soma" value = '+' onclick = "operacao('+')"/>
-                <input type="button" class="numero" id="maismenos" value = '&plusmn' onclick = "mudaSinal()"/>
-                <input type="button" class="numero" id="numero" value = '0' onclick = "insertNum(0)"/>
-                <input type="button" class="numero" id="decimal" value = '.' onclick = "insertNum('.')"/>
-                <input type="button" class="numero" id="igual" value = '=' onclick ="equal()"/>
+                <input type="button" class="operador" id="/" value = '&divide' onclick = "operacao('/')"/>
+                <input type="button" class="numero" id="7" value = '7' onclick = "insereNum(7)"/>
+                <input type="button" class="numero" id="8" value = '8' onclick = "insereNum(8)" />
+                <input type="button" class="numero" id="9" value = '9' onclick = "insereNum(9)"/>
+                <input type="button" class="operador" id="x" value = '&times' onclick = "operacao('*')"/>
+                <input type="button" class="numero" id="4" value = '4' onclick = "insereNum(4)"/>
+                <input type="button" class="numero" id="5" value = '5' onclick = "insereNum(5)"/>
+                <input type="button" class="numero" id="6" value = '6' onclick = "inserteNum(6)"/>
+                <input type="button" class="operador" id="-" value = '-' onclick = "operacao('-')">
+                <input type="button" class="numero" id="1" value = '1' onclick = "insereNum(1)">
+                <input type="button" class="numero" id="2" value = '2' onclick = "insereNum(2)"/>
+                <input type="button" class="numero" id="3" value = '3' onclick = "insereNum(3)"/>
+                <input type="button" class="operador" id="+" value = '+' onclick = "operacao('+')"/>
+                <input type="button" class="operador" id="inverteSinal" value = '&plusmn' onclick = "mudaSinal()"/>
+                <input type="button" class="numero" id="0" value = '0' onclick = "insereNum(0)"/>
+                <input type="button" class="numero" id="." value = '.' onclick = "insereNum('.')"/>
+                <input type="button" class="operador" id="=" value = '=' onclick ="equal()"/>
             </div>
         </div>
+<script src="script.js"></script>
 </body>
 </html>

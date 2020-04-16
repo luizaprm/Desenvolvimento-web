@@ -2,28 +2,11 @@ var novoValor = "";
 var valorPrevio ="" ;
 var operador = "";
 var resultado = "";
-var valorMemoria;
+var arrayMemoria = [];
 var decimalClick = false;
-var operadorClick = false;
+//var operadorClick = false;
 //var operacaoHistorico;
-var igualClick = false;
-
-
-function getHistorico(){
-    return document.getElementById("historico").innerText;
-}
-
-function getResultado(){
-    return document.getElementById("saida").value;
-}
-
-function printHistorico(num){
-    document.getElementById("historico").innerText = num;
-}
-
-function printResultado(num){
-		document.getElementById("output-value").innerText=num
-}
+//var igualClick = false;
 
 function insereNum(botaoPressionado){
     if(resultado){
@@ -79,8 +62,7 @@ function igual(){
     }
     document.getElementById("historico").value = valorPrevio + " " + operador + " " + novoValor + " =";
     valorPrevio = resultado;
-    document.getElementById("saida").value = resultado;  
-
+    document.getElementById("saida").value = resultado;
 }
 
 function porcentagem(){
@@ -171,9 +153,9 @@ function clearC(){ //limpa todas as operações que estavam sendo feitas
 } 
 
 function deleteNum(){
-    var apagaDigito = document.getElementById("saida").value;
-    document.getElementById("saida").value=apagaDigito.substr(0, apagaDigito.length -1);
-
+    apagaDigito = document.getElementById("saida").value;
+    novoValor = apagaDigito.substr(0,apagaDigito.length -1);
+    document.getElementById("saida").value = novoValor;
 }
 
 function cancelEntry(){
@@ -181,28 +163,36 @@ function cancelEntry(){
     document.getElementById("saida").value = 0;
 }
 
-function salvarMemoria(){ 
-    valorMemoria = document.getElementById("saida").value;
+function salvaMemoria(){
+    let entrada = document.getElementById("saida").value;
+    arrayMemoria.push(entrada);
  }
 
- function recuperaMemoria(){ 
-    if(valorMemoria){
-        document.getElementById("saida").value = valorMemoria;
+ function recuperaMemoria(){
+    var ultimoElemento;
+    if(arrayMemoria.length > 0){
+        ultimoElemento = arrayMemoria[arrayMemoria.length - 1];
+        document.getElementById("saida").value = ultimoElemento;
+        novoValor = ultimoElemento;
+    }else{
+        ultimoElemento = arrayMemoria[0];
+        document.getElementById(saida).value = ultimoElemento;
+        novoValor = arrayMemoria[0];
     }
-}
+ }
 
-function clearMemoria(){ 
-    valorMemoria = "";
-}
+ function clearMemoria(){
+        while (arrayMemoria.length){
+             arrayMemoria.pop(); 
+         }
+        document.getElementById("saida").value = 0;
+        document.getElementById("saida").value = "";
+        novoValor = "";
+ }
 
-function addMemoria(){   //M+ = soma o resultado ao último n armazenado CONCATENOU
-    if(valorMemoria){
-        valorMemoria+= document.getElementById("saida").value;
-    }
-}
-
-function minusMemoria(){     //M- = subtrai o resultado ao último n armazenado DEU CERTO
-    if(valorMemoria){
-        valorMemoria-= document.getElementById("saida").value;
+ function minusMemoria(){     
+    if(arrayMemoria.length>=0){
+        ultimoElemento-= novoValor;
+        document.getElementById(saida).value = ultimoElemento;
     }
 }

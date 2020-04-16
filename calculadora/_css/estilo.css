@@ -26,21 +26,27 @@ div#tela{
     text-align: right;
 }
 
-.hist{
-    height: 2px;
-    margin: 0 20px;
-    padding-top: 20px;
+.historicoVisor{
+    text-align: right;
+    width: 250px;
+    height: 30px;
+    margin: 20px 10px auto 15px;
     font-size: 15px;
     font-weight: lighter;
+    background-color:  #eaedef;
     color: #83838b;
     border: none;
-    background-color: #eaedef;
 }
 
-.result{
-    height: 50px;
-    margin-right: 25px;
-    font-size: 30pt;
+.saidaVisor{
+    width: 250px;
+    height: 70px;
+    margin: 0 10px auto 15px;
+    text-align: right;
+    font-size: 40px;
+    font-weight: bold;
+    background-color:  #eaedef;
+    border: none;
 }
 
 div#teclado{

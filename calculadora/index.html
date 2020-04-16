@@ -9,11 +9,9 @@
     <p>Calculadora</p>   
         <div id = "calculadora">
             <form name = "calculadora">
-            <div id = "tela"> 
-                <div id = "historicoVisor"></div>
-                    <input type="text" class="hist" id="historico" readonly/>
-                <div id ="saidaVisor"></div>
-                    <input type="text" class= "result" id="saida" value = "0" readonly/>
+            <div id = "tela">
+                    <input type="text" class="historicoVisor" id="historico" size= "12"readonly/>
+                    <input type="text" class= "saidaVisor" id="saida" size="10" value = "0" readonly/>
             </form>
             </div>
             <div id="teclado">
@@ -21,7 +19,7 @@
                 <input type="button" class="functionM" id="MR" value ='MR' onclick = "recuperaMemoria()"/>
                 <input type="button" class="functionM" id="M+" value ='M+' onclick = "addMemoria()" />
                 <input type="button" class="functionM" id="M-" value ='M-' onclick = "minusMemoria()"/>
-                <input type="button" class="functionM" id="MS" value ='MS'onclick = "salvarMemoria()"/>
+                <input type="button" class="functionM" id="MS" value ='MS'onclick = "salvaMemoria()"/>
                 <input type="button" class="functionM" id="M"  value ='M' onclick = "exibTotalMemoria()"/>
                 <input type="button" class="operador" id="%" value ='%' onclick = "porcentagem()"/>
                 <input type="button" class="operador" id="cancel entry" value ='CE' onclick = "cancelEntry()"/>
