@@ -62,12 +62,37 @@ div#teclado{
     font-size: 10px;
     font-weight: bold;
     border-width: 0;
-    transition: background-color 1s;
+    transition: background-color 0.2s;
 }
 
 .functionM:hover{
     border-width: 1px;
 }
+
+
+.listaMemroia{
+    display: block;
+    position: absolute;
+    width: 400px;
+    height: 290px;
+    border: 1px solid #226073;
+    padding: 5px 0;
+    margin: 0;
+    list-style-type: none;
+    background-color: #eaedef;
+    color: black;
+    box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.8);
+  }
+
+  .listaMemoria li {
+    padding: 3px 10px;
+    text-align: left;
+  }
+  
+  .listaMemoria li:hover {
+    background-color: #226073;
+  }
+  
 
 .operador{
     margin: 5px 2px 5px 2px;
@@ -77,7 +102,7 @@ div#teclado{
     font-size: 12pt;
     background-color: #8dd5f3;
     border-width: 1px;
-    transition: background-color 1s;
+    transition: background-color 0.2s;
 }
 
 #igual.operador{
@@ -105,7 +130,7 @@ div#teclado{
     font-weight: bold;
     background-color: #f8f9fd;
     border-width: 1px;
-    transition: background-color 1s;
+    transition: background-color 0.2s;
 }
 
 

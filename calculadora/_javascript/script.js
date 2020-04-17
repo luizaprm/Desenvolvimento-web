@@ -1,12 +1,12 @@
 var novoValor = "";
-var valorPrevio ="" ;
+var valorPrevio = "";
 var operador = "";
 var resultado = "";
 var arrayMemoria = [];
 var decimalClick = false;
+var ultimoElemento = "";
 //var operadorClick = false;
 //var operacaoHistorico;
-//var igualClick = false;
 
 function insereNum(botaoPressionado){
     if(resultado){
@@ -119,7 +119,6 @@ function raiz(){
 }
 
 function mudaSinal(){ 
-   // let auxiliar;
     if(resultado){
         if(Math.sign(resultado) == -1){
             resultado = Math.abs(resultado);
@@ -166,33 +165,64 @@ function cancelEntry(){
 function salvaMemoria(){
     let entrada = document.getElementById("saida").value;
     arrayMemoria.push(entrada);
- }
+
+    $('.listaMemoria').html('');
+    arrayMemoria.forEach(function(elemento){
+        $('.listaMemoria').append('<li>' + elemento + '</li>')
+        $('.listaMemoria').hide();
+    });
+} //talvez aqui criar um if pra atualizar a listaMemoria
+
+function exibTotalMemoria(){
+    $('.listaMemoria').toggle("fast", function(){});
+}
+
+$('.listaMemoria').on('click', 'li', listaMemoria); //REVER
+
+function listaMemoria(){ //REVER
+    $('.listaMemoria').text($(this).text());
+}
 
  function recuperaMemoria(){
-    var ultimoElemento;
-    if(arrayMemoria.length > 0){
+    if(arrayMemoria){
         ultimoElemento = arrayMemoria[arrayMemoria.length - 1];
         document.getElementById("saida").value = ultimoElemento;
         novoValor = ultimoElemento;
-    }else{
-        ultimoElemento = arrayMemoria[0];
-        document.getElementById(saida).value = ultimoElemento;
-        novoValor = arrayMemoria[0];
     }
  }
 
  function clearMemoria(){
-        while (arrayMemoria.length){
-             arrayMemoria.pop(); 
-         }
-        document.getElementById("saida").value = 0;
-        document.getElementById("saida").value = "";
-        novoValor = "";
+    while (arrayMemoria.length){
+        arrayMemoria.pop(); 
+    }
+    document.getElementById("saida").value = 0;
+    document.getElementById("saida").value = "";
+    novoValor = "";
+    $('.listaMemoria').hide("fast", function(){});
+    $('.listaMemoria').html('');
  }
 
- function minusMemoria(){     
-    if(arrayMemoria.length>=0){
-        ultimoElemento-= novoValor;
-        document.getElementById(saida).value = ultimoElemento;
+ function minusMemoria(){
+    let auxiliar = arrayMemoria[arrayMemoria.length - 1]; 
+    if(arrayMemoria){
+        if(resultado){
+            auxiliar -= resultado;
+        }else{
+            auxiliar -= novoValor;
+        }
     }
+    arrayMemoria[arrayMemoria.length - 1] = auxiliar; 
+}
+
+function addMemoria(){
+    let auxiliar = arrayMemoria[arrayMemoria.length - 1]; 
+    auxiliar = parseFloat(auxiliar);
+    if(arrayMemoria){
+        if(resultado){
+            auxiliar += parseFloat(resultado);
+        }else{
+            auxiliar += parseFloat(novoValor);
+        }
+    }
+    arrayMemoria[arrayMemoria.length - 1] = auxiliar; 
 }

@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="_css/estilo.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Calculadora</title>
 </head>
 <body>
@@ -20,11 +21,12 @@
                 <input type="button" class="functionM" id="M+" value ='M+' onclick = "addMemoria()" />
                 <input type="button" class="functionM" id="M-" value ='M-' onclick = "minusMemoria()"/>
                 <input type="button" class="functionM" id="MS" value ='MS'onclick = "salvaMemoria()"/>
-                <input type="button" class="functionM" id="M"  value ='M' onclick = "exibTotalMemoria()"/>
+                <input type="button" class="functionM" id="M"  value ='M&#9660' onclick = "exibTotalMemoria()"/>
+                    <ul class= "listaMemoria"></ul>
                 <input type="button" class="operador" id="%" value ='%' onclick = "porcentagem()"/>
                 <input type="button" class="operador" id="cancel entry" value ='CE' onclick = "cancelEntry()"/>
                 <input type="button" class="operador" id="clear" value ='C' onclick = "clearC()"/>
-                <input type="button" class="operador" id="backspace" value = 'bcks' onclick = "deleteNum()"/>
+                <input type="button" class="operador" id="backspace" value = '&#9003' onclick = "deleteNum()"/>
                 <input type="button" class="operador" id="fracao" value = '1/x' onclick = "fracao()"/>
                 <input type="button" class="operador" id="x2" value = 'x&sup2' onclick = "potenciacao()"/>
                 <input type="button" class="operador" id="raiz" value = '&#x221A' onclick = "raiz()"/>
