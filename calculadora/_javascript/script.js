@@ -5,8 +5,6 @@ var resultado = "";
 var arrayMemoria = [];
 var decimalClick = false;
 var ultimoElemento = "";
-//var operadorClick = false;
-//var operacaoHistorico;
 
 function insereNum(botaoPressionado){
     if(resultado){
@@ -44,6 +42,14 @@ function igual(){
     valorPrevio = parseFloat(valorPrevio);
     novoValor = parseFloat(novoValor);
 
+    if(Number.isNaN(novoValor) && valorPrevio!=""){
+        novoValor = valorPrevio;
+    }else{
+        if(Number.isNaN(valorPrevio) ? "0" : novoValor){ //REVER
+            //valorPrevio = 0;
+            //novoValor = "";
+        }
+    } 
     switch(operador){
         case "+":
             resultado = valorPrevio + novoValor;
@@ -171,16 +177,17 @@ function salvaMemoria(){
         $('.listaMemoria').append('<li>' + elemento + '</li>')
         $('.listaMemoria').hide();
     });
-} //talvez aqui criar um if pra atualizar a listaMemoria
+} 
 
 function exibTotalMemoria(){
     $('.listaMemoria').toggle("fast", function(){});
 }
 
-$('.listaMemoria').on('click', 'li', listaMemoria); //REVER
+$('.listaMemoria').on('click', 'li', listaMemoria);
 
-function listaMemoria(){ //REVER
-    $('.listaMemoria').text($(this).text());
+function listaMemoria(){
+    document.getElementById("saida").value = ($(this).text());
+    novoValor = document.getElementById("saida").value;
 }
 
  function recuperaMemoria(){
@@ -198,7 +205,7 @@ function listaMemoria(){ //REVER
     document.getElementById("saida").value = 0;
     document.getElementById("saida").value = "";
     novoValor = "";
-    $('.listaMemoria').hide("fast", function(){});
+    $('.listaMemoria').hide("fast", "linear", function(){});
     $('.listaMemoria').html('');
  }
 
@@ -211,7 +218,8 @@ function listaMemoria(){ //REVER
             auxiliar -= novoValor;
         }
     }
-    arrayMemoria[arrayMemoria.length - 1] = auxiliar; 
+    arrayMemoria[arrayMemoria.length - 1] = auxiliar;
+    $('.listaMemoria li:last-child').text() = auxiliar;
 }
 
 function addMemoria(){

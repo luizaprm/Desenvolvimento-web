@@ -69,31 +69,28 @@ div#teclado{
     border-width: 1px;
 }
 
-
-.listaMemroia{
-    display: block;
+.listaMemoria{
+    display: none;
     position: absolute;
-    width: 400px;
-    height: 290px;
-    border: 1px solid #226073;
+    left: 250px;
+    top: 170px;
+    min-width: 45px;
+    border: 1px solid black;
     padding: 5px 0;
     margin: 0;
     list-style-type: none;
     background-color: #eaedef;
-    color: black;
-    box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.8);
-  }
+}
 
-  .listaMemoria li {
+.listaMemoria li {
     padding: 3px 10px;
-    text-align: left;
+    text-align: center;
   }
   
   .listaMemoria li:hover {
-    background-color: #226073;
+    background-color: #bba3e0;
   }
   
-
 .operador{
     margin: 5px 2px 5px 2px;
     width: 68px;
@@ -118,7 +115,7 @@ div#teclado{
 }
 
 .operador:hover,.numero:hover{ 
-    background-color: #bba3e0
+    background-color: #bba3e0;
 }
 
 .numero{
