@@ -81,7 +81,7 @@ function exibeMemoria(){
         novoVal = valMemoria;
     }
 }
-
+//onclick="selecionarValorMemoria()"
 
 If you followed Derek, this should work.
 function deleteNum() {
@@ -227,13 +227,30 @@ $('.operations').on('click', 'button', operation);
 
 
 
+if(output==""&&history!=""){
+    if(isNaN(history[history.length-1])){
+        history= history.substr(0,history.length-1);
+    }
+}
+if(output!="" || history!=""){
+    output= output==""?output:reverseNumberFormat(output);
+    history=history+output;
+    if(this.id=="="){
+        var result=eval(history);
+        printOutput(result);
+        printHistory("");
+    }
+    else{
+        history=history+this.id;
+        printHistory(history);
+        printOutput("");
+    }
 
 
 
 
 
-
-
+    readyToReset = false;
 
 
 
