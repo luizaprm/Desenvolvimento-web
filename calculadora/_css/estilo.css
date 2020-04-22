@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
 body{
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Bangers', cursive;
     background-image: linear-gradient(to right,#96c2e7,#e2b0d3, #ffc1ba);
     color: black;
     font-weight: bold;
-    font-size: 15pt;
+    font-size: 22pt;
 }
 
 div#calculadora{

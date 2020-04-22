@@ -42,14 +42,15 @@ function igual(){
     valorPrevio = parseFloat(valorPrevio);
     novoValor = parseFloat(novoValor);
 
-    if(Number.isNaN(novoValor) && valorPrevio!=""){
-        novoValor = valorPrevio;
+    if(isNaN(novoValor) && isNaN(valorPrevio)){
+        valorPrevio = "";
+        novoValor = "";
+        document.getElementById(saida).value = 0;
     }else{
-        if(Number.isNaN(valorPrevio) ? "0" : novoValor){ //REVER
-            //valorPrevio = 0;
-            //novoValor = "";
+        if(Number.isNaN(novoValor)){
+            novoValor = valorPrevio;
         }
-    } 
+    }
     switch(operador){
         case "+":
             resultado = valorPrevio + novoValor;
@@ -171,6 +172,7 @@ function cancelEntry(){
 function salvaMemoria(){
     let entrada = document.getElementById("saida").value;
     arrayMemoria.push(entrada);
+    novoValor = "";
 
     $('.listaMemoria').html('');
     arrayMemoria.forEach(function(elemento){
@@ -219,7 +221,7 @@ function listaMemoria(){
         }
     }
     arrayMemoria[arrayMemoria.length - 1] = auxiliar;
-    $('.listaMemoria li:last-child').text() = auxiliar;
+    $('.listaMemoria li:last-child').text(auxiliar);
 }
 
 function addMemoria(){
@@ -232,5 +234,6 @@ function addMemoria(){
             auxiliar += parseFloat(novoValor);
         }
     }
-    arrayMemoria[arrayMemoria.length - 1] = auxiliar; 
+    arrayMemoria[arrayMemoria.length - 1] = auxiliar;
+    $('.listaMemoria li:last-child').text(auxiliar);
 }
