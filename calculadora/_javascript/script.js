@@ -6,6 +6,9 @@ var arrayMemoria = [];
 var decimalClick = false;
 var ultimoElemento = "";
 
+
+
+
 function insereNum(botaoPressionado){
     if(resultado){
         novoValor = botaoPressionado;
@@ -88,41 +91,42 @@ function porcentagem(){
 function fracao(){
     let fracaoValor;
     if(resultado){
-        fracaoValor = 1/fracaoValor;
+        document.getElementById("historico").value = "1/" + "(" + resultado + ")";
+        fracaoValor = 1/resultado;
+        document.getElementById("saida").value = fracaoValor;
     }else{
+        document.getElementById("historico").value = "1/" + "(" + novoValor + ")";
         fracaoValor = 1/novoValor;
+        document.getElementById("saida").value = fracaoValor;
     }
-    let auxiliar = novoValor;
-    novoValor = fracaoValor;
-    document.getElementById("saida").value = fracaoValor;
-    document.getElementById("historico").value = "1/" + "(" + auxiliar + ")";
+    resultado = fracaoValor;
 }
 
 function potenciacao(){
     let expValor;
     if(resultado){
-        expvalor = Math.pow(resultado,2)
+        document.getElementById("historico").value = "(" + resultado + ")²";
+        document.getElementById("saida").value = Math.pow(resultado, 2);
+        resultado = document.getElementById("saida").value;
     }else{
+        document.getElementById("historico").value = "(" + novoValor + ")²";
         expValor = Math.pow(novoValor, 2);
+        document.getElementById("saida").value = expValor;
+        resultado = expValor;
     }
-    let auxiliar = novoValor;
-    novoValor = expValor;
-    document.getElementById("saida").value = expValor;
-    document.getElementById("historico").value = "sqrt" + "(" + auxiliar + ")";
 }
 
 function raiz(){
     let raizValor;
     if(resultado){
+        document.getElementById("historico").value = "√" + "(" + resultado + ")";
         raizValor = Math.sqrt(resultado);
     }else{
+        document.getElementById("historico").value = "√" + "(" + novoValor + ")";
         raizValor = Math.sqrt(novoValor);
     }
-    let auxiliar = novoValor;
-    novoValor = raizValor;
+    resultado = raizValor;
     document.getElementById("saida").value = raizValor;
-    document.getElementById("historico").value = "√" + "(" + auxiliar + ")";
-
 }
 
 function mudaSinal(){ 
@@ -236,4 +240,64 @@ function addMemoria(){
     }
     arrayMemoria[arrayMemoria.length - 1] = auxiliar;
     $('.listaMemoria li:last-child').text(auxiliar);
+}
+
+/*
+function key_detect_calc(id,evt)
+{
+        if((evt.keyCode>95) && (evt.keyCode<106))
+        {
+                var nbr = evt.keyCode-96;
+                add_calc(id,nbr);
+        }
+        else if((evt.keyCode>47) && (evt.keyCode<58))
+        {
+                var nbr = evt.keyCode-48;
+                add_calc(id,nbr);
+        }
+        else if(evt.keyCode==107)
+        {
+                f_calc(id,'+');
+        }
+        else if(evt.keyCode==109)
+        {
+                f_calc(id,'-');
+        }
+        else if(evt.keyCode==106)
+        {
+                f_calc(id,'*');
+        }
+        else if(evt.keyCode==111)
+        {
+                f_calc(id,'');
+        }
+        else if(evt.keyCode==110)
+        {
+                add_calc(id,'.');
+        }
+        else if(evt.keyCode==190)
+        {
+                add_calc(id,'.');
+        }
+        else if(evt.keyCode==188)
+        {
+                add_calc(id,'.');
+        }
+        else if(evt.keyCode==13)
+        {
+                f_calc(id,'=');
+        }
+        else if(evt.keyCode==46)
+        {
+                f_calc(id,'ce');
+        }
+        else if(evt.keyCode==8)
+        {
+                f_calc(id,'nbs');
+        }
+        else if(evt.keyCode==27)
+        {
+                f_calc(id,'ce');
+        }
+        return true;
 }
