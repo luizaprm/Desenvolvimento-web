@@ -6,9 +6,6 @@ var arrayMemoria = [];
 var decimalClick = false;
 var ultimoElemento = "";
 
-
-
-
 function insereNum(botaoPressionado){
     if(resultado){
         novoValor = botaoPressionado;
@@ -24,6 +21,41 @@ function insereNum(botaoPressionado){
         }
     }    
     document.getElementById("saida").value = novoValor;
+}
+
+document.onkeypress = function(){
+  for(var i = 0; i<10; i++){
+      if(event.keyCode == i + 48){
+            insereNum(i);
+      }  
+  }
+  if(event.keyCode == 42){
+    operadorMat('*');
+  }else if (event.keyCode == 43){
+    operadorMat('+');
+  }else if(event.keyCode == 45){
+    operadorMat('-');
+  }else if(event.keyCode == 47){
+    operadorMat('/');
+  }else if(event.keyCode == 46){
+    insereNum('.');
+  }else if(event.keyCode == 37){
+    porcentagem();
+  }else if(event.keyCode == 94){
+    potenciacao();
+  }else if(event.keyCode == 13 || event.keyCode == 61){
+    igual();
+  }
+}
+
+document.onkeydown = function(){
+    if(event.keyCode == 8){
+        deleteNum();
+    }else if(event.keyCode == 46){
+        cancelEntry();
+    }else if(event.keyCode == 27){
+        clearC();
+    }
 }
 
 function operadorMat(operadorBotao){
@@ -78,14 +110,14 @@ function igual(){
 function porcentagem(){
     let porcentValor;
     if(resultado){
+        document.getElementById("historico").value = resultado + "%";
         porcentValor = resultado/100;
     }else{
+        document.getElementById("historico").value = novoValor + "%";
         porcentValor = novoValor/100;
     }
-    let auxiliar = novoValor;
-    novoValor = porcentValor;
+    resultado = porcentValor;
     document.getElementById("saida").value = porcentValor;
-    document.getElementById("historico").value = auxiliar + "%";
 }
 
 function fracao(){
@@ -240,64 +272,4 @@ function addMemoria(){
     }
     arrayMemoria[arrayMemoria.length - 1] = auxiliar;
     $('.listaMemoria li:last-child').text(auxiliar);
-}
-
-/*
-function key_detect_calc(id,evt)
-{
-        if((evt.keyCode>95) && (evt.keyCode<106))
-        {
-                var nbr = evt.keyCode-96;
-                add_calc(id,nbr);
-        }
-        else if((evt.keyCode>47) && (evt.keyCode<58))
-        {
-                var nbr = evt.keyCode-48;
-                add_calc(id,nbr);
-        }
-        else if(evt.keyCode==107)
-        {
-                f_calc(id,'+');
-        }
-        else if(evt.keyCode==109)
-        {
-                f_calc(id,'-');
-        }
-        else if(evt.keyCode==106)
-        {
-                f_calc(id,'*');
-        }
-        else if(evt.keyCode==111)
-        {
-                f_calc(id,'');
-        }
-        else if(evt.keyCode==110)
-        {
-                add_calc(id,'.');
-        }
-        else if(evt.keyCode==190)
-        {
-                add_calc(id,'.');
-        }
-        else if(evt.keyCode==188)
-        {
-                add_calc(id,'.');
-        }
-        else if(evt.keyCode==13)
-        {
-                f_calc(id,'=');
-        }
-        else if(evt.keyCode==46)
-        {
-                f_calc(id,'ce');
-        }
-        else if(evt.keyCode==8)
-        {
-                f_calc(id,'nbs');
-        }
-        else if(evt.keyCode==27)
-        {
-                f_calc(id,'ce');
-        }
-        return true;
 }
